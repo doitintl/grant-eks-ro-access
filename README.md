@@ -1,7 +1,7 @@
-# Grant read-only access on a EKS cluster
+# Grant read-only access to a EKS cluster
 
 The script automates all the steps needed to grant read-only access to a EKS.
-It lets also the to revoke the provided accesses.
+It also lets the to revoke the provided accesses.
 
 ## How To
 
@@ -65,16 +65,16 @@ The script:
 
 - provides the ability to grant and remove permissions
 - is robust: any prerequisite is tested
-- is idempotent: you can run it any time and have the same result (feature on-going)
+- is idempotent: you can run it any time and have the same result (feature ongoing)
 - tests the result (TODO)
 
 
 ## Progress status
 
-This section provide an overall status of this script and the next steps.
+This section provides an overall status of this script and the next steps.
 
 
-### Nest staps
+### Next steps
 
 - test with EKS cluster in authentication mode CONFIG_MAP: DONE
 - test with EKS cluster in authentication mode API: DONE
