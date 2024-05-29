@@ -28,16 +28,31 @@ Inputs to provide:
 - clusterName: eks cluster name
 - arn: IAM arn to provide accesses to
 
-Example:
+**Example:**
 
 ```bash
-./grant-ro-accesses.sh --start eu-west-1 cluster_name arn:aws:iam::123456789000:user/programmatic/eks_user
+./grant-ro-accesses.sh --grant eu-west-1 cluster_name arn:aws:iam::123456789000:user/programmatic/eks_user
 ```
 
 
 ### Revoke accesses:
 
-TODO
+```bash
+./grant-ro-accesses.sh --revoke <region> <clusterName> <arn>
+```
+
+Inputs to provide:
+
+- region: aws region where the cluster is
+- clusterName: eks cluster name
+- arn: IAM arn to provide accesses to
+
+
+**Example:**
+
+```bash
+./grant-ro-accesses.sh --revoke eu-west-1 cluster_name arn:aws:iam::123456789000:user/programmatic/eks_user
+```
 
 
 
@@ -67,3 +82,8 @@ The script:
 - is robust: any prerequisite is tested
 - is idempotent: you can run it any time and have the same result (feature ongoing)
 
+
+## Kubernetes permissions
+
+Kubernetes permissions are defined by the ClusterRole 'doit:view'.
+Currently this identical to the standard ClusterRole view provided by kubernetes with the add of the last group of permissions letting to have read-only accesses to nodes.
