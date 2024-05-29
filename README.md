@@ -12,7 +12,7 @@ Before executing the script you need to install:
 - kubectl
 - eksctl
 - aws cli
-And you need to have access in admin mode to the cluster.
+And you need to have admin permissions to the cluster.
 There requirements are tested by the script.
 
 
@@ -66,24 +66,4 @@ The script:
 - provides the ability to grant and remove permissions
 - is robust: any prerequisite is tested
 - is idempotent: you can run it any time and have the same result (feature ongoing)
-- tests the result (TODO)
 
-
-## Progress status
-
-This section provides an overall status of this script and the next steps.
-
-
-### Next steps
-
-- test with EKS cluster in authentication mode CONFIG_MAP: DONE
-- test with EKS cluster in authentication mode API: DONE
-- test with EKS cluster in authentication mode API_AND_CONFIG_MAP: TODO
-- implement idempotent feature: TODO for access entries
-- test the result: TODO
-- peer review: TODO
-
-
-### Nice to have
-
-- named input
