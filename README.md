@@ -83,7 +83,7 @@ The script:
 - is idempotent: you can run it any time and have the same result (feature ongoing)
 
 
-## Kubernetes permissions
+## Kubernetes permissions
 
-Kubernetes permissions are defined by the ClusterRole 'doit:view'.
-Currently this identical to the standard ClusterRole view provided by kubernetes with the add of the last group of permissions letting to have read-only accesses to nodes.
+Kubernetes permissions are defined by the ClusterRole 'doit:view' defined in the file resources/k8s_objects.yaml.
+Currently this identical to the standard ClusterRole 'view' provided by kubernetes with the add of the last group of permissions letting to have read-only accesses to nodes.
