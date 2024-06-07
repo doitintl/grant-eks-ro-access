@@ -1,5 +1,4 @@
-
-#!/bin/bash
+#!/bin/bash -u
 
 source ./resources/verify_requirements.sh
 source ./resources/validate_inputs.sh
