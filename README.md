@@ -12,7 +12,8 @@ Before executing the script you need to install:
 - kubectl
 - eksctl
 - aws cli
-And you need to have admin permissions to the cluster.
+  
+You need to have admin permissions to the cluster.
 There requirements are tested by the script.
 
 
