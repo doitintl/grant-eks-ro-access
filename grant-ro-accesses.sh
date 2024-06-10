@@ -6,7 +6,7 @@ source ./resources/validate_inputs.sh
 
 addRightsToConfigMap(){
 
-    echo "\nupdating aws-auth ConfigMap to grant permissions....."
+    echo -e "\nupdating aws-auth ConfigMap to grant permissions....."
     echo "backup of the aws-config ConfigMap made in aws-config_history.yaml"
     kubectl get configmaps -n kube-system aws-auth -o yaml >> aws-config_history.yaml
     echo "---" >> aws-config_history.yaml
@@ -22,7 +22,7 @@ addRightsToConfigMap(){
 
 removeRightsToConfigMap(){
 
-    echo "\nupdating aws-auth ConfigMap to revoke permissions ....."
+    echo -e "\nupdating aws-auth ConfigMap to revoke permissions ....."
     echo "backup of the aws-config ConfigMap made in aws-config_history.yaml"
     kubectl get configmaps -n kube-system aws-auth -o yaml >> aws-config_history.yaml
     echo "---" >> aws-config_history.yaml
@@ -35,7 +35,7 @@ removeRightsToConfigMap(){
 createAccessEntry(){
 
     # https://docs.aws.amazon.com/eks/latest/userguide/access-policies.html
-    echo "\ncreating access entries ........."
+    echo -e "\ncreating access entries ........."
     checkIfAccessEntryExists
     case "$accessEntrieAlreadyExists" in
         1)
@@ -72,7 +72,7 @@ checkIfAccessEntryExists(){
 
 deleteAccessEntry(){
 
-    echo "\ndeleting access entries ........."
+    echo -e "\ndeleting access entries ........."
     checkIfAccessEntryExists
     case "$accessEntrieAlreadyExists" in
         1)
@@ -91,7 +91,7 @@ deleteAccessEntry(){
 
 checkAuthenticationMode(){
 
-    echo "\ncheck authenticationMode ........."
+    echo -e "\ncheck authenticationMode ........."
     export authenticationMode=$(aws eks describe-cluster  --region=${region}  --name ${cluster_name} | jq '.cluster.accessConfig.authenticationMode' -r)
     echo "authenticationMode is set to $authenticationMode"
 

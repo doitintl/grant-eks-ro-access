@@ -10,7 +10,6 @@ sudo mv /tmp/eksctl /usr/local/bin
 echo "eksctl is installed at version `eksctl version`"
 
 
-
 repo_url="https://github.com/doitintl/grant-eks-ro-access.git"
 repo_dir="grant-eks-ro-access"
 
@@ -21,16 +20,13 @@ else
   echo "Repository already exists at $repo_dir"
 fi
 
-
 cd $repo_dir
 
-
-echo "currently you have these clister"
+echo -e "\ncurrently you have these clister\n"
 aws eks list-clusters | jq .clusters[] -r
-echo ""
-echo "which cluster do you want to provide access to "?
-read cluster
-echo "you choose the cluster: $cluster"
+read -p "which cluster do you want to provide access to ?: " cluster
+
+echo "we are going to provide read-only accesses to the cluster: $cluster"
 
 account=`aws sts get-caller-identity --query Account --output text`
 echo "Current account is : $account"

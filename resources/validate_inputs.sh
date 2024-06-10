@@ -1,6 +1,6 @@
 
 testClusterName(){
-  
+
     region=$1
     cluster_name=$2
 
@@ -27,7 +27,7 @@ validateRegion(){
 
 verifyInputs(){
 
-    echo "\nverifying inputs ....."
+    echo -e "\nverifying inputs ....."
     # todo: validate inputs
     echo "connecting to account number $(aws sts get-caller-identity |jq .Account -r)"
 
