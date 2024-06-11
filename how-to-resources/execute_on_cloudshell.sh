@@ -24,7 +24,7 @@ cd $repo_dir
 
 echo -e "\ncurrently you have these clister\n"
 aws eks list-clusters | jq .clusters[] -r
-read -p "which cluster do you want to provide access to ?: " cluster
+read -p "\nwhich cluster do you want to provide access to ?: " cluster
 
 echo "we are going to provide read-only accesses to the cluster: $cluster"
 
