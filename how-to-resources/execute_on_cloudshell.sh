@@ -15,9 +15,13 @@ repo_dir="grant-eks-ro-access"
 
 # clone the repositoty
 if [ ! -d "$repo_dir" ]; then
+  echo "Cloning repository"
   git clone "$repo_url" "$repo_dir"
 else
-  echo "Repository already exists at $repo_dir"
+  echo "Repository already exists,removing, at $repo_dir"
+  rm -r "$repo_dir" #to be sure to have always the last version without problem with git conflicts
+  echo "Cloning repository"
+  git clone "$repo_url" "$repo_dir"  
 fi
 
 cd $repo_dir
