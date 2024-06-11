@@ -19,7 +19,7 @@ if [ ! -d "$repo_dir" ]; then
   git clone "$repo_url" "$repo_dir"
 else
   echo "Repository already exists,removing, at $repo_dir"
-  rm -r "$repo_dir" #to be sure to have always the last version without problem with git conflicts
+  rm -rf "$repo_dir" #to be sure to have always the last version without problem with git conflicts
   echo "Cloning repository"
   git clone "$repo_url" "$repo_dir"  
 fi
