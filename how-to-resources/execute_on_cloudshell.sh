@@ -28,9 +28,10 @@ cd $repo_dir
 
 echo -e "\ncurrently you have these clister\n"
 aws eks list-clusters | jq .clusters[] -r
-read -p "\nwhich cluster do you want to provide access to ?: " cluster
-
-echo "we are going to provide read-only accesses to the cluster: $cluster"
+echo ""
+read -p "Which cluster do you want to provide access to ?: " cluster
+echo ""
+echo "going to provide read-only accesses to the cluster: $cluster"
 
 account=`aws sts get-caller-identity --query Account --output text`
 echo "Current account is : $account"
