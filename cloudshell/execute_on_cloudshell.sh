@@ -42,7 +42,7 @@ prepare_execution(){
   # gather info: cluster, region, account
   echo -e "\ncurrently you have these clister\n"
   aws eks list-clusters | jq .clusters[] -r
-  echo -e "\n"
+  echo -e "\n-"
   read -p "which cluster do you want to provide access to ?: " cluster
   export cluster=$cluster
   echo "we are going to provide read-only accesses to the cluster: $cluster"
