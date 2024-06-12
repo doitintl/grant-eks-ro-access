@@ -111,7 +111,7 @@ Commands:\n
 
 while [ $# -gt 0 ] ; do
   case $1 in
-    --grant) prepare_execution; grant exit 0  ;;
+    --grant) prepare_execution; grant; exit 0  ;;
     --revoke) prepare_execution; revoke; exit 0  ;;
     * )
      echo "Invalid Option: -$1" 1>&2
