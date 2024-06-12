@@ -17,7 +17,8 @@ prepare_execution(){
 
   # install eksctl if not present
   echo "checking eksctl is installed"
-  if [ -x "$(command -v eksctl)" ]; then
+  if command -v eksctl &> /dev/null
+  then
       echo "eksctl is intalled "
   else
       echo "installing eksctl"
