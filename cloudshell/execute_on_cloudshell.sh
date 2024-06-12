@@ -1,7 +1,7 @@
 
-#!/bin/bash -u
+#!/bin/bash
 
-
+  # set -e
 
 
 case "$AWS_EXECUTION_ENV" in
@@ -19,7 +19,7 @@ prepare_execution(){
   echo "checking eksctl is installed"
   if command -v eksctl &> /dev/null
   then
-      echo "eksctl is intalled "
+      echo "eksctl is installed at version `eksctl version`"
   else
       echo "installing eksctl"
       curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
@@ -27,7 +27,7 @@ prepare_execution(){
       echo "eksctl is installed at version `eksctl version`"
   fi
 
-  set -e
+
   repo_url="https://github.com/doitintl/grant-eks-ro-access.git"
   repo_dir="grant-eks-ro-access"
 
