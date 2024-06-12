@@ -40,7 +40,7 @@ prepare_execution(){
   cd $repo_dir
 
   # gather info: cluster, region, account
-  echo -e "\ncurrently you have these clister\n"
+  echo -e "\ncurrently you have these clisters:\n"
   aws eks list-clusters | jq .clusters[] -r
   echo -e "\n-"
   read -p "which cluster do you want to provide access to ?: " cluster
