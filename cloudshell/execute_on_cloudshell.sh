@@ -77,7 +77,7 @@ testClusterName(){
 
 grant(){
 
-  echo -e "granting permissions to the cluster : $cluster \n"
+  echo -e "\nGranting permissions to the cluster : $cluster \n"
   ./grant-ro-accesses.sh --grant ${region}  ${cluster} arn:aws:iam::$account:role/DoiT-Support-Gateway
 
 }
@@ -85,7 +85,7 @@ grant(){
 
 revoke(){
 
-  echo -e "revoking permissions to the cluster : $cluster \n"
+  echo -e "\nRevoking permissions to the cluster : $cluster \n"
   ./grant-ro-accesses.sh --revoke ${region}  ${cluster} arn:aws:iam::$account:role/DoiT-Support-Gateway
 
 }
