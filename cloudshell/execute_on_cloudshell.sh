@@ -1,7 +1,7 @@
 
-#!/bin/bash
+#!/bin/bash -u
 
-  # set -e
+set -e
 
 
 case "$AWS_EXECUTION_ENV" in
