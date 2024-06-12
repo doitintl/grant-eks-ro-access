@@ -53,9 +53,23 @@ prepare_execution(){
   region=`echo $AWS_REGION`
   echo "Current region is : $region"
 
+  testClusterName $region $cluster
   # configure access to k8s cluster
   aws eks update-kubeconfig --name $cluster
 
+}
+
+testClusterName(){
+
+    region=$1
+    cluster_name=$2
+
+    if aws eks describe-cluster  --region ${region}  --name ${cluster_name} > /dev/null 2>&1; then
+      echo "Cluster Name: $cluster_name"
+    else
+        echo "impossible to find the cluster $cluster_name" 2>&1
+        exit 1
+    fi
 }
 
 
