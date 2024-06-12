@@ -148,11 +148,22 @@ revoke(){
 
 
 
-message="Usage: ./grant-ro-accesses.sh
+message="
+Usage: ./grant-ro-accesses.sh
 [--grant <region> <clusterName> <arn>]
 [--revoke <region> <clusterName> <arn>]
 [--verifyRequirements]
 [--help]
+
+\n\n
+The command let to grant or revoke EKS read-only access to an AWS IAM entity.\n
+Commands:\n
+--grant: provide read-only access to IAM entity identified by <arn>, to the EKS cluster with name <clusterName> in the region <region> \n
+--revoke: revoke read-only access to IAM entity identified by <arn>, to the EKS cluster with name <clusterName> in the region <region> \n
+--verifyRequirements: run a check on the requirement needed by this script. This step is also included in --grant and --revoke commands \n
+--help: show this message
+
+
 
 "
 
@@ -164,14 +175,14 @@ while [ $# -gt 0 ] ; do
     --help)  echo "$message" ; exit 0  ;;
     * )
      echo "Invalid Option: -$1" 1>&2
-     echo $message
+     echo -e $message
      exit 1
      ;;
   esac
   shift
 done
 
-echo $message
+echo -e $message
 
 exit 0
 

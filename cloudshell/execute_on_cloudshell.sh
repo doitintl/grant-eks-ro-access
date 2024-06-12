@@ -59,7 +59,7 @@ prepare_execution(){
 }
 
 testClusterName(){
-  
+
     region=$1
     cluster_name=$2
 
@@ -121,4 +121,3 @@ done
 echo -e $message
 
 exit 0
-

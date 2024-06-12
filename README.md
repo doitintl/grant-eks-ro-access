@@ -12,7 +12,7 @@ Before executing the script you need to install:
 - kubectl
 - eksctl
 - aws cli
-  
+
 You need to have admin permissions to the cluster.
 There requirements are tested by the script.
 
@@ -73,6 +73,11 @@ Based on the cluster configuration, this last step is made with ConfigMap aws-au
 ### Flow process of the script
 
 ![Alt Text](./doc_resources/schema.svg)
+
+
+### Preserve aws-auth configmap history
+
+In case the cluster is configured to use config map as authentication, before any update of the config map, its current status is backed up to the file aws-config_history.yaml
 
 
 ## Features
