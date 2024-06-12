@@ -1,6 +1,6 @@
 
 #!/bin/bash -u
-set -e
+
 
 
 
@@ -18,7 +18,7 @@ prepare_execution(){
   # install eksctl if not present
   echo "checking eksctl is installed"
   eksctl info > /dev/null
-  if [ $? -eq 0 ]; then
+  if [ -x "$(command -v eksctl)" ]; then
       echo "eksctl is intalled "
   else
       echo "installing eksctl"
@@ -27,6 +27,7 @@ prepare_execution(){
       echo "eksctl is installed at version `eksctl version`"
   fi
 
+  set -e
   repo_url="https://github.com/doitintl/grant-eks-ro-access.git"
   repo_dir="grant-eks-ro-access"
 
