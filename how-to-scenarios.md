@@ -10,18 +10,11 @@ You need to access to the AWS Console with the user admin of the cluster, in the
 ## Grant permissions
 Here is the command to use:
 ```bash
-curl -N https://raw.githubusercontent.com/doitintl/grant-eks-ro-access/main/cloudshell/execute_on_cloudshell.sh && bash -i execute_on_cloudshell.sh --grant
+wget --no-cache https://raw.githubusercontent.com/doitintl/grant-eks-ro-access/main/cloudshell/execute_on_cloudshell.sh -o execute_on_cloudshell.sh && bash -i execute_on_cloudshell.sh --grant
 ```
 
-
-
-## Grant permissions
+## Revoke permissions
 Here is the command to use:
 ```bash
-curl -N https://raw.githubusercontent.com/doitintl/grant-eks-ro-access/main/cloudshell/execute_on_cloudshell.sh && bash -i execute_on_cloudshell.sh
+wget --no-cache https://raw.githubusercontent.com/doitintl/grant-eks-ro-access/main/cloudshell/execute_on_cloudshell.sh  -o execute_on_cloudshell.sh && bash -i execute_on_cloudshell.sh --revoke
 ```
-
-curl -N https://raw.githubusercontent.com/doitintl/grant-eks-ro-access/improving_cloudshell/cloudshell/execute_on_cloudshell.sh && bash -i execute_on_cloudshell.sh
-
-https://raw.githubusercontent.com/doitintl/grant-eks-ro-access/improving_cloudshell/cloudshell/execute_on_cloudshell.sh
-https://raw.githubusercontent.com/doitintl/grant-eks-ro-access/improving_cloudshell/cloudshell/execute_on_cloudshell.sh

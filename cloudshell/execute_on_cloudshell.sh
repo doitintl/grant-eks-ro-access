@@ -27,7 +27,6 @@ prepare_execution(){
       echo "eksctl is installed at version `eksctl version`"
   fi
 
-
   repo_url="https://github.com/doitintl/grant-eks-ro-access.git"
   repo_dir="grant-eks-ro-access"
 
@@ -39,14 +38,12 @@ prepare_execution(){
   fi
   cd $repo_dir
 
-  # gather info: cluster, region, account
 
+  # gather info: cluster, region, account
   account=`aws sts get-caller-identity --query Account --output text`
   echo "Current account is : $account"
-
   region=`echo $AWS_REGION`
   echo "Current region is : $region"
-
   echo -e "\ncurrently you have these clisters:\n"
   aws eks list-clusters | jq .clusters[] -r
   echo -e "\n"
@@ -62,7 +59,7 @@ prepare_execution(){
 }
 
 testClusterName(){
-
+  
     region=$1
     cluster_name=$2
 
