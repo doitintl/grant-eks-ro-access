@@ -40,12 +40,6 @@ prepare_execution(){
   cd $repo_dir
 
   # gather info: cluster, region, account
-  echo -e "\ncurrently you have these clisters:\n"
-  aws eks list-clusters | jq .clusters[] -r
-  echo -e "\n"
-  read -p "which cluster do you want to provide access to ?: " cluster
-  export cluster=$cluster
-  echo "we are going to provide read-only accesses to the cluster: $cluster"
 
   account=`aws sts get-caller-identity --query Account --output text`
   echo "Current account is : $account"
@@ -53,7 +47,16 @@ prepare_execution(){
   region=`echo $AWS_REGION`
   echo "Current region is : $region"
 
+  echo -e "\ncurrently you have these clisters:\n"
+  aws eks list-clusters | jq .clusters[] -r
+  echo -e "\n"
+  read -p "which cluster do you want to provide access to ?: " cluster
+  export cluster=$cluster
+
+  echo "Checking Cluster..."
   testClusterName $region $cluster
+  echo "we are going to provide read-only accesses to the cluster: $cluster"
+
   # configure access to k8s cluster
   aws eks update-kubeconfig --name $cluster
 
