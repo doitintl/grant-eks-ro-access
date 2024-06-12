@@ -55,7 +55,6 @@ prepare_execution(){
 
   echo "Checking Cluster..."
   testClusterName $region $cluster
-  echo "we are going to provide read-only accesses to the cluster: $cluster"
 
   # configure access to k8s cluster
   aws eks update-kubeconfig --name $cluster
@@ -78,7 +77,7 @@ testClusterName(){
 
 grant(){
 
-  echo "granting permissions to the $cluster"
+  echo "granting permissions to the cluster : $cluster"
   ./grant-ro-accesses.sh --grant ${region}  ${cluster} arn:aws:iam::$account:role/DoiT-Support-Gateway
 
 }
@@ -86,7 +85,7 @@ grant(){
 
 revoke(){
 
-  echo "revoking permissions to the $cluster"
+  echo "revoking permissions to the cluster : $cluster"
   ./grant-ro-accesses.sh --revoke ${region}  ${cluster} arn:aws:iam::$account:role/DoiT-Support-Gateway
 
 }
