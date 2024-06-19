@@ -149,21 +149,19 @@ revoke(){
 
 
 message="
-Usage: ./grant-ro-accesses.sh
-[--grant <region> <clusterName> <arn>]
-[--revoke <region> <clusterName> <arn>]
-[--verifyRequirements]
-[--help]
-
-\n\n
-The command let to grant or revoke EKS read-only access to an AWS IAM entity.\n
+\n
+The command lets to grant or revoke EKS read-only access to an AWS IAM entity.\n\n
 Commands:\n
---grant: provide read-only access to IAM entity identified by <arn>, to the EKS cluster with name <clusterName> in the region <region> \n
---revoke: revoke read-only access to IAM entity identified by <arn>, to the EKS cluster with name <clusterName> in the region <region> \n
---verifyRequirements: run a check on the requirement needed by this script. This step is also included in --grant and --revoke commands \n
---help: show this message
-
-
+--grant: provides read-only access to IAM entity identified by <arn>, to the EKS cluster with name <clusterName> in the region <region> \n
+--revoke: revokes read-only access to IAM entity identified by <arn>, to the EKS cluster with name <clusterName> in the region <region> \n
+--verifyRequirements: runs a check on the requirements needed by this script. This step is also included in --grant and --revoke commands \n
+--help: shows this message \n
+\n
+Usage: \n
+./grant-ro-accesses.sh [--grant <region> <clusterName> <arn>] \n
+./grant-ro-accesses.sh [--revoke <region> <clusterName> <arn>] \n
+./grant-ro-accesses.sh [--verifyRequirements] \n
+./grant-ro-accesses.sh [--help] \n
 
 "
 
@@ -172,7 +170,7 @@ while [ $# -gt 0 ] ; do
     --grant) verifyRequirements; verifyInputs $@; grant; exit 0  ;;
     --revoke) verifyRequirements; verifyInputs $@; revoke; exit 0  ;;
     --verifyRequirements) verifyRequirements; exit 0  ;;
-    --help)  echo "$message" ; exit 0  ;;
+    --help)  echo -e $message ; exit 0  ;;
     * )
      echo "Invalid Option: -$1" 1>&2
      echo -e $message
