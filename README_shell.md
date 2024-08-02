@@ -11,11 +11,11 @@ Please configure the environment variable $AWS_REGION with the AWS region where 
 ## Grant permissions
 Here is the command to use:
 ```bash
-wget --no-cache https://github.com/doitintl/grant-eks-ro-access/blob/feature/execute_on_shell/shell/execute_on_shell.sh -O execute_on_shell.sh && bash -i execute_on_shell.sh --grant
+wget --no-cache https://raw.githubusercontent.com/doitintl/grant-eks-ro-access/feature/execute_on_shell/shell/execute_on_shell.sh -O execute_on_shell.sh && bash -i execute_on_shell.sh --grant
 ```
 
 ## Revoke permissions
 Here is the command to use:
 ```bash
-wget --no-cache https://github.com/doitintl/grant-eks-ro-access/blob/feature/execute_on_shell/shell/execute_on_shell.sh -O execute_on_shell.sh && bash -i execute_on_shell.sh --revoke
+wget --no-cache https://raw.githubusercontent.com/doitintl/grant-eks-ro-access/feature/execute_on_shell/shell/execute_on_shell.sh -O execute_on_shell.sh && bash -i execute_on_shell.sh --revoke
 ```
