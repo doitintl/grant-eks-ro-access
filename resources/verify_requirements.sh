@@ -24,7 +24,7 @@ verifyRequirements() {
     echo "checking eksctl is installed"
     eksctl info > /dev/null
     if [ $? -eq 0 ]; then
-        echo "eksctl is intalled "
+        echo "eksctl is installed "
     else
         echo "Error: eksctl not installed" >&2
         exit 1
@@ -34,7 +34,7 @@ verifyRequirements() {
     echo "checking jq is installed"
     jq -V > /dev/null
     if [ $? -eq 0 ]; then
-        echo "jq is intalled "
+        echo "jq is installed "
     else
         echo "Error: jq not installed" >&2
         exit 1
@@ -43,7 +43,7 @@ verifyRequirements() {
     echo "checking aws cli is installed"
     aws --version > /dev/null
     if [ $? -eq 0 ]; then
-        echo "aws is intalled "
+        echo "aws is installed "
     else
         echo "Error: aws not installed" >&2
         exit 1
