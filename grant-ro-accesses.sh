@@ -53,7 +53,7 @@ createAccessEntry(){
             ;;
     esac
     echo "Now you have the following access entries on the cluster $cluster_name"
-    aws eks list-access-entries --cluster-name ${cluster_name} | jq '.accessEntries'
+    aws eks list-access-entries --cluster-name ${cluster_name} --output json | jq '.accessEntries'
 }
 
 
@@ -84,7 +84,7 @@ deleteAccessEntry(){
             ;;
     esac
     echo "Now you have the following access entries on the cluster $cluster_name"
-    aws eks list-access-entries --cluster-name ${cluster_name} | jq '.accessEntries'
+    aws eks list-access-entries --cluster-name ${cluster_name} --output json | jq '.accessEntries'
 
 }
 
@@ -92,7 +92,7 @@ deleteAccessEntry(){
 checkAuthenticationMode(){
 
     echo -e "\ncheck authenticationMode ........."
-    export authenticationMode=$(aws eks describe-cluster  --region=${region}  --name ${cluster_name} | jq '.cluster.accessConfig.authenticationMode' -r)
+    export authenticationMode=$(aws eks describe-cluster  --region=${region}  --name ${cluster_name} --output json | jq '.cluster.accessConfig.authenticationMode' -r)
     echo "authenticationMode is set to $authenticationMode"
 
 }

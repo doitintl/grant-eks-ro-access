@@ -29,7 +29,7 @@ verifyInputs(){
 
     echo -e "\nverifying inputs ....."
     # todo: validate inputs
-    echo "connecting to account number $(aws sts get-caller-identity |jq .Account -r)"
+    echo "connecting to account number $(aws sts get-caller-identity --output json|jq .Account -r)"
 
     case $# in
     4)
