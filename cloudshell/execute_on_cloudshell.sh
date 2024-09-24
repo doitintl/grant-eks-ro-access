@@ -70,11 +70,11 @@ prepare_execution(){
 
 
   # configure access to k8s cluster
-  echo -e "\nConfiguring access to the cluster"
+  echo -e "\nSetting kubernetes configuration to access to the cluster and updating the current-context to use it"
   aws eks update-kubeconfig --name $cluster
 
   # check access to k8s cluster
-  echo -e "\nChecking access to the cluster"
+  echo -e "\nChecking access to the cluster with kubectl"
   set +e
   kubectl  --request-timeout=2 get nodes > /dev/null
   if [ $? -eq 0 ]; then
