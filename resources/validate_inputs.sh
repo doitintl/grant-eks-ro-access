@@ -48,6 +48,19 @@ verifyInputs(){
             echo "impossible to connect to the cluster: please check inputs (region and cluster name) or your permissions to AWS"
         fi
 
+        echo "Setting kubernetes configuration to access to the cluster and updating the current-context to use it"
+        aws eks update-kubeconfig --name ${cluster_name} --region ${region}
+
+        echo "checking access to the cluster and kubectl command installation"
+        kubectl get nodes > /dev/null
+        if [ $? -eq 0 ]; then
+            echo "kubectl get nodes command executed successfully"
+        else
+            echo "Error: kubectl get nodes command failed." >&2
+            exit 1
+        fi
+
+
         echo "using region set to $region"
         echo "using cluster_name set to $cluster_name"
         echo "using role_arn set to $role_arn"
