@@ -44,19 +44,51 @@ prepare_execution(){
   echo "Current account is : $account"
   region=`echo $AWS_REGION`
   echo "Current region is : $region"
-  echo -e "\ncurrently you have these clisters:\n"
-  aws eks list-clusters | jq .clusters[] -r
-  echo -e "\n"
-  read -p "which cluster do you want to provide access to ?: " cluster
+
+  case $(aws eks list-clusters | jq '.clusters | length') in
+    0) echo "You have no cluster in this account/region"; exit 0;;
+    *)
+      echo -e "\ncurrently you have these clisters:\n"
+      aws eks list-clusters | jq '.clusters[]' -r
+      echo -e "\n"
+      read -p "which cluster do you want to provide access to ?: " cluster
+  ;;
+  esac
   export cluster=$cluster
 
   echo "Checking Cluster..."
   testClusterName $region $cluster
 
+  # check endpoints
+  vpc_conf=`aws eks describe-cluster --name $cluster --output json | jq '.cluster.resourcesVpcConfig' -r`
+  export endpointPublicAccess=`echo $vpc_conf | jq '.endpointPublicAccess' -r`
+  echo "endpointPublicAccess set to  : $endpointPublicAccess"
+  export endpointPrivateAccess=`echo $vpc_conf | jq '.endpointPrivateAccess' -r`
+  echo "endpointPrivateAccess set to  : $endpointPrivateAccess"
+  export publicAccessCidrs=`echo $vpc_conf | jq '.publicAccessCidrs' -r`
+  echo "publicAccessCidrs set to  : $publicAccessCidrs"
+
+
   # configure access to k8s cluster
+  echo -e "\nConfiguring access to the cluster"
   aws eks update-kubeconfig --name $cluster
 
+  # check access to k8s cluster
+  echo -e "\nChecking access to the cluster"
+  set +e
+  kubectl  --request-timeout=2 get nodes > /dev/null
+  if [ $? -eq 0 ]; then
+      echo -e "Connection establised (kubectl get nodes command executed successfully)"
+      set -e
+  else
+      echo -e "Error: impossible to communicate with the cluster (kubectl get nodes command failed)\n
+      Plese vefiry connectivity or access configuration.\n" >&2
+      exit 1
+  fi
+
 }
+
+
 
 testClusterName(){
 
