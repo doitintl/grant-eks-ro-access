@@ -82,7 +82,7 @@ prepare_execution(){
       set -e
   else
       echo -e "Error: impossible to communicate with the cluster (kubectl get nodes command failed)\n
-      Plese vefiry connectivity or access configuration.\n" >&2
+      Please verify connectivity or access configuration.\n" >&2
       exit 1
   fi
 
