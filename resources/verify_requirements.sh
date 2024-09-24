@@ -12,8 +12,8 @@ verifyRequirements() {
         exit 1
     fi
 
-    echo "checking access to the cluster and kubectl command installation"
-    kubectl get nodes > /dev/null
+    echo "checking if kubectl is installed"
+    kubectl version  --client > /dev/null
     if [ $? -eq 0 ]; then
         echo "kubectl get nodes command executed successfully"
     else
