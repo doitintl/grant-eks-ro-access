@@ -62,11 +62,19 @@ prepare_execution(){
   # check endpoints
   vpc_conf=`aws eks describe-cluster --name $cluster --output json | jq '.cluster.resourcesVpcConfig' -r`
   export endpointPublicAccess=`echo $vpc_conf | jq '.endpointPublicAccess' -r`
-  echo "endpointPublicAccess set to  : $endpointPublicAccess"
+  echo "endpointPublicAccess set to : $endpointPublicAccess"
   export endpointPrivateAccess=`echo $vpc_conf | jq '.endpointPrivateAccess' -r`
-  echo "endpointPrivateAccess set to  : $endpointPrivateAccess"
+  echo "endpointPrivateAccess set to : $endpointPrivateAccess"
   export publicAccessCidrs=`echo $vpc_conf | jq '.publicAccessCidrs' -r`
-  echo "publicAccessCidrs set to  : $publicAccessCidrs"
+  echo "publicAccessCidrs set to : $publicAccessCidrs"
+
+  if [ "$endpointPublicAccess" = "false" ]; then
+    echo -e "\n
+    ------ Warning: ----- \n
+    Since the public endpoint for this cluster is disabled, this script may not be able to connect to the cluster endpoint.
+    If the connection cannot be established, please report this message to DoiT.
+    --------------------- \n"
+  fi
 
 
   # configure access to k8s cluster
@@ -81,8 +89,13 @@ prepare_execution(){
       echo -e "Connection establised (kubectl get nodes command executed successfully)"
       set -e
   else
-      echo -e "Error: impossible to communicate with the cluster (kubectl get nodes command failed)\n
+      echo -e "\nError: impossible to communicate with the cluster (kubectl get nodes command failed)
       Please verify connectivity or access configuration.\n" >&2
+      if [ "$endpointPublicAccess" = "false" ]; then
+      echo -e "\n Since the public endpoint for this cluster is disabled and the connection cannot be established,
+      please report this message to DoiT.\n
+      \n"
+     fi
       exit 1
   fi
 
