@@ -1,8 +1,10 @@
-# The problem with public endpoint
+# How-to: ecevute CloudShell in a chosen VPC
+
+
+## The problem with public endpoint
 
 This how-to is useful in case you want to run the script "execute_on_cloudshell.sh" with EKS clusters not having public endpoint enabled.
-In this case you can still execute the script by using "[AWS CloudShell in Amazon VPC](https://docs.aws.amazon.com/cloudshell/latest/userguide/using-cshell-in-vpc.html)": with this feature, a CloudShell environment can be create in the VPC where the private endpoint are available and accessible.
-
+In this case you, can still execute the script by using "[AWS CloudShell in Amazon VPC](https://docs.aws.amazon.com/cloudshell/latest/userguide/using-cshell-in-vpc.html)": with this feature, a CloudShell environment can be created in the VPC where the private endpoint are available and accessible.
 
 
 ## How to create a CloudShell environment letting to access private endpoints
