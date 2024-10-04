@@ -71,8 +71,8 @@ prepare_execution(){
   if [ "$endpointPublicAccess" = "false" ]; then
     echo -e "\n
     ------ Warning: ----- \n
-    as public endpoints are closed for this cluster, this script could not be able to connect to the cluster endpoint.
-    If the connection cannot be granted, please report this message to DoiT.
+    Since the public endpoint for this cluster is disabled, this script may not be able to connect to the cluster endpoint.
+    If the connection cannot be established, please report this message to DoiT.
     --------------------- \n"
   fi
 
@@ -92,7 +92,8 @@ prepare_execution(){
       echo -e "\nError: impossible to communicate with the cluster (kubectl get nodes command failed)
       Please verify connectivity or access configuration.\n" >&2
       if [ "$endpointPublicAccess" = "false" ]; then
-      echo -e "\n As public endpoints are closed for this cluster, please report this message to DoiT: an alternative approach will be provided.\n
+      echo -e "\n Since the public endpoint for this cluster is disabled and the connection cannot be established,
+      please report this message to DoiT.\n
       \n"
      fi
       exit 1
