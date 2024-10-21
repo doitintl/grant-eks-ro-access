@@ -33,10 +33,14 @@ prepare_execution(){
   # clone the repositoty
   if [ ! -d "$repo_dir" ]; then
     git clone "$repo_url" "$repo_dir"
+    cd $repo_dir
   else
-    echo "Repository already exists at $repo_dir"
+    echo "Repository already exists at $repo_dir, updating it"
+    cd $repo_dir
+    git pull
+
   fi
-  cd $repo_dir
+
 
 
   # gather info: cluster, region, account
