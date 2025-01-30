@@ -141,7 +141,24 @@ rules:
 - apiGroups: [""]
   resources: ["nodes"]
   verbs: ["get", "list", "watch"]
-
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources: ["clusterroles", "clusterrolebindings", "roles", "rolebindings"]
+  verbs: ["get", "list"]
+- apiGroups: ["storage.k8s.io"]
+  resources: ["storageclasses"]
+  verbs: ["get", "list"]
+- apiGroups: [""]
+  resources: ["persistentvolumes"]
+  verbs: ["get", "list"]
+- apiGroups: ["karpenter.k8s.aws"]
+  resources: ["ec2nodeclasses"]
+  verbs: ["get", "list"]
+- apiGroups: ["karpenter.sh"]
+  resources: ["nodepools"]
+  verbs: ["get", "list"]
+- apiGroups: ["autoscaling.k8s.io"]
+  resources: ["verticalpodautoscalers"]
+  verbs: ["get", "list"]
 
 ---
 
