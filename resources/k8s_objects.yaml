@@ -159,7 +159,15 @@ rules:
 - apiGroups: ["autoscaling.k8s.io"]
   resources: ["verticalpodautoscalers"]
   verbs: ["get", "list"]
-
+- apiGroups: ["kafka.strimzi.io"]
+  resources: ["kafkas", "kafkanodepools", "kafkaconnects", "kafkaconnectors", "kafkabridges", "kafkaaccess", "kafkarebalances", "kafkausers", "kafkausers", "kafkamirrormakers", "kafkamirrormaker2s"]
+  verbs: ["get", "list"]
+- apiGroups: ["keda.sh/v1alpha1"]
+  resources: ["scaledobjects", "scaledjobs"]
+  verbs: ["get", "list"]
+- apiGroups: ["sparkoperator.k8s.io"]
+  resources: ["sparkapplications", "scheduledsparkapplications"]
+  verbs: ["get", "list"]
 ---
 
 
